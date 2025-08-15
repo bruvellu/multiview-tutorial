@@ -8,6 +8,20 @@ modified: today
 toc: true
 toc-depth: 3
 bibliography: multiview.bib
+lang: en
+format:
+    pdf:
+        papersize: a4
+        geometry:
+        - hmargin=25mm
+        - vmargin=25mm
+        fontsize: 12pt
+        fontfamily: libertine
+        linestretch: 1
+link-citations: true
+colorlinks: true
+citecolor: Maroon
+urlcolor: MidnightBlue
 ---
 
 # Summary
@@ -33,3 +47,4 @@ bibliography: multiview.bib
 4. Register views
 5. Set bounding box
 6. Fuse views
+
