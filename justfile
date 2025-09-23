@@ -8,4 +8,4 @@ default:
 # Render the entire project
 render:
     quarto render multiview-tutorial.md --to html
-    quarto render multiview-tutorial.md --to pdf
+    #quarto render multiview-tutorial.md --to pdf
