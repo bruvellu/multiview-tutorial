@@ -8,4 +8,5 @@ default:
 # Render the entire project
 render:
     quarto render multiview-tutorial.md --to html
+    # Can't add videos to PDF yet
     #quarto render multiview-tutorial.md --to pdf
