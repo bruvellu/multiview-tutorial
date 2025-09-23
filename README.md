@@ -1,3 +1,3 @@
-# Tutorial on multiview reconstruction using BigStitcher in Fiji
+# 🌟 Multiview reconstruction using BigStitcher in Fiji
 
-How to perform multiview reconstruction of multiview lightsheet datasets using BigStitcher in Fiji.
+How to register and fuse multiview lightsheet datasets using BigStitcher in Fiji.
