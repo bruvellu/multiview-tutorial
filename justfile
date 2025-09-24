@@ -1,12 +1,17 @@
 # Set the default shell to bash
 set shell := ["bash", "-cu"]
 
+# Main project file
+file := "multiview-tutorial"
+
 # List all available recipes
 default:
     @just --list
 
-# Render the entire project
+# Preview project on local server
+preview:
+    quarto preview {{file}}.md
+
+# Render project to HTML
 render:
-    quarto render multiview-tutorial.md --to html
-    # Can't add videos to PDF yet
-    #quarto render multiview-tutorial.md --to pdf
+    quarto render {{file}}.md --to html
