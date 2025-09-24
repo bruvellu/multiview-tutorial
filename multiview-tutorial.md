@@ -18,13 +18,17 @@ format:
         fontsize: 12pt
         fontfamily: libertine
         linestretch: 1
+    html:
+        embed-resources: true
 link-citations: true
 colorlinks: true
 citecolor: Maroon
 urlcolor: MidnightBlue
 ---
 
-# Summary
+## Summary
+
+This is a tutorial on how to register and fuse multiview datasets acquired with lightsheet microscopy using BigStitcher [@Horl2019-vx] in Fiji [@Schindelin2012-di].
 
 - Outline of the protocol.
 
@@ -35,13 +39,13 @@ urlcolor: MidnightBlue
 5. Set bounding box
 6. Fuse views
 
-# Requirements
+## Requirements
 
 - Lightsheet multiview dataset
 - Fiji/ImageJ
 - BigStitcher
 
-# Setup Fiji
+## Setup Fiji
 
 - Install Fiji
 - Start Fiji
@@ -50,48 +54,56 @@ urlcolor: MidnightBlue
 
 ![Start Fiji and install BigStitcher.](./media/Video 1 - Start Fiji and install BigStitcher.mp4){#fig-setup-fiji}
 
-# Inspect dataset
+## Inspect dataset
 
 - Inspect dataset in Fiji
 
 ![Inspect multiview dataset.](./media/Video 2 - Inspect multiview dataset.mp4){#fig-inspect-dataset}
 
-# Registration
+## Registration
 
-## 1. Define dataset
+Is this it?
+
+### 1. Define dataset
+
+Trying.
 
 ![Define multiview dataset.](./media/Video 3 - Define multiview dataset.mp4){#fig-define-dataset}
 
-## 2. Resave dataset
+### 2. Resave dataset
 
 ![Resave multiview dataset.](./media/Video 4 - Resave multiview dataset.mp4){#fig-resave-dataset}
 
-## 3. Visualize dataset
+### 3. Visualize dataset
 
 ![Visualize multiview dataset with BigDataViewer.](./media/Video 5 - Visualize multiview dataset with BigDataViewer.mp4){#fig-visualize-dataset}
 
-## 4. Detect points
+### 4. Detect points
 
 ![Detect interest points.](./media/Video 6 - Detect interest points.mp4){#fig-detect-points}
 
-## 5. Register views
+### 5. Register views
 
 ![Register views using interest points.](./media/Video 7 - Register views using interest points.mp4){#fig-register-views}
 
-## 6. Set bounding box
+### 6. Set bounding box
 
 ![Set bounding box.](./media/Video 8 - Set bounding box.mp4){#fig-set-bounding}
 
-## 7. Fuse dataset (single channel)
+### 7. Fuse dataset (single channel)
 
 ![Fuse multiview dataset.](./media/Video 9 - Fuse multiview dataset single channel.mp4){#fig-fuse-single}
 
-## 8. Duplicate transformation
+### 8. Duplicate transformation
 
 ![Duplicate transformation to other channels.](./media/Video 10 - Duplicate transformation to other channels.mp4){#fig-duplicate-transformation}
 
-## 9. Fuse dataset (all channels)
+### 9. Fuse dataset (all channels)
 
 ![Fuse multiview dataset (all channels).](./media/Video 11 - Fuse multiview dataset all channels.mp4){#fig-fuse-all}
 
 
+## References
+
+::: {#refs}
+:::
