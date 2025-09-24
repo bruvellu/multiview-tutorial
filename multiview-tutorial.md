@@ -6,31 +6,29 @@ date-format: long
 created: 12 August 2025
 modified: today
 toc: true
-toc-depth: 3
 bibliography: multiview.bib
 lang: en
 format:
-    pdf:
-        papersize: a4
-        geometry:
-        - hmargin=25mm
-        - vmargin=25mm
-        fontsize: 12pt
-        fontfamily: libertine
-        linestretch: 1
+    #pdf:
+        #papersize: a4
+        #geometry:
+        #- hmargin=25mm
+        #- vmargin=25mm
+        #fontsize: 12pt
+        #fontfamily: libertine
+        #linestretch: 1
     html:
-        embed-resources: true
+        toc-depth: 3
+        #embed-resources: true
 link-citations: true
 colorlinks: true
 citecolor: Maroon
 urlcolor: MidnightBlue
 ---
 
-## Summary
+## Summary {#sec-summary}
 
 This is a tutorial on how to register and fuse multiview datasets acquired with lightsheet microscopy using BigStitcher [@Horl2019-vx] in Fiji [@Schindelin2012-di].
-
-- Outline of the protocol.
 
 1. Define dataset
 2. Resave dataset
@@ -39,69 +37,128 @@ This is a tutorial on how to register and fuse multiview datasets acquired with 
 5. Set bounding box
 6. Fuse views
 
-## Requirements
+## Requirements {#sec-requirements}
 
 - Lightsheet multiview dataset
 - Fiji/ImageJ
 - BigStitcher
 
-## Setup Fiji
+## Setup {#sec-setup}
 
 - Install Fiji
 - Start Fiji
 - Install BigStitcher
 - Restart Fiji
 
-![Start Fiji and install BigStitcher.](./media/Video 1 - Start Fiji and install BigStitcher.mp4){#fig-setup-fiji}
+::: {#fig-setup-fiji}
 
-## Inspect dataset
+{{< video "media/Video1-Start_Fiji_and_install_BigStitcher.mp4" >}}
+
+Start Fiji and install BigStitcher.
+
+:::
+
+## Inspect dataset {#sec-inspect-dataset}
 
 - Inspect dataset in Fiji
 
-![Inspect multiview dataset.](./media/Video 2 - Inspect multiview dataset.mp4){#fig-inspect-dataset}
+::: {#fig-inspect-dataset}
 
-## Registration
+{{< video "media/Video2-Inspect_multiview_dataset.mp4" >}}
 
-Is this it?
+Inspect multiview dataset.
 
-### 1. Define dataset
+:::
 
-Trying.
+## Define dataset {#sec-define-dataset}
 
-![Define multiview dataset.](./media/Video 3 - Define multiview dataset.mp4){#fig-define-dataset}
+::: {#fig-define-dataset}
 
-### 2. Resave dataset
+{{< video "media/Video3-Define_multiview_dataset.mp4" >}}
 
-![Resave multiview dataset.](./media/Video 4 - Resave multiview dataset.mp4){#fig-resave-dataset}
+Define multiview dataset.
 
-### 3. Visualize dataset
+:::
 
-![Visualize multiview dataset with BigDataViewer.](./media/Video 5 - Visualize multiview dataset with BigDataViewer.mp4){#fig-visualize-dataset}
+## Resave dataset {#sec-resave-dataset}
 
-### 4. Detect points
+::: {#fig-resave-dataset}
 
-![Detect interest points.](./media/Video 6 - Detect interest points.mp4){#fig-detect-points}
+{{< video "media/Video4-Resave_multiview_dataset.mp4" >}}
 
-### 5. Register views
+Resave multiview dataset.
 
-![Register views using interest points.](./media/Video 7 - Register views using interest points.mp4){#fig-register-views}
+:::
 
-### 6. Set bounding box
+## Visualize dataset {#sec-visualize-dataset}
 
-![Set bounding box.](./media/Video 8 - Set bounding box.mp4){#fig-set-bounding}
+::: {#fig-visualize-dataset}
 
-### 7. Fuse dataset (single channel)
+{{< video "media/Video5-Visualize_multiview_dataset_with_BigDataViewer.mp4" >}}
 
-![Fuse multiview dataset.](./media/Video 9 - Fuse multiview dataset single channel.mp4){#fig-fuse-single}
+Visualize multiview dataset with BigDataViewer.
 
-### 8. Duplicate transformation
+:::
 
-![Duplicate transformation to other channels.](./media/Video 10 - Duplicate transformation to other channels.mp4){#fig-duplicate-transformation}
+## Detect points {#sec-detect-points}
 
-### 9. Fuse dataset (all channels)
+::: {#fig-detect-points}
 
-![Fuse multiview dataset (all channels).](./media/Video 11 - Fuse multiview dataset all channels.mp4){#fig-fuse-all}
+{{< video "media/Video6-Detect_interest_points.mp4" >}}
 
+Detect interest points.
+
+:::
+
+## Register views {#sec-register-views}
+
+::: {#fig-register-views}
+
+{{< video "media/Video7-Register_views_using_interest_points.mp4" >}}
+
+Register views using interest points.
+
+:::
+
+## Set bounding box {#sec-set-bounding}
+
+::: {#fig-set-bounding}
+
+{{< video "media/Video8-Set_bounding_box.mp4" >}}
+
+Set bounding box.
+
+:::
+
+## Fuse dataset (one channel) {#sec-fuse-single}
+
+::: {#fig-fuse-single}
+
+{{< video "media/Video9-Fuse_multiview_dataset_one_channel.mp4" >}}
+
+Fuse multiview dataset.
+
+:::
+
+## Duplicate transformation {#sec-duplicate-transformation}
+
+::: {#fig-duplicate-transformation}
+
+{{< video "media/Video10-Duplicate_transformation_to_other_channels.mp4" >}}
+
+Duplicate transformation to other channels.
+
+:::
+
+## Fuse dataset (all channels) {#sec-fuse-all}
+
+::: {#fig-fuse-all}
+
+{{< video "media/Video11-Fuse_multiview_dataset_all_channels.mp4" >}}
+
+Fuse multiview dataset (all channels).
+
+:::
 
 ## References
 
