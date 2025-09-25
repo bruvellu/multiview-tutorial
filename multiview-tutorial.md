@@ -6,20 +6,11 @@ date-format: long
 created: 12 August 2025
 modified: today
 toc: true
-bibliography: multiview.bib
+toc-depth: 3
+#embed-resources: true
+bibliography: references.bib
 lang: en
-format:
-    #pdf:
-        #papersize: a4
-        #geometry:
-        #- hmargin=25mm
-        #- vmargin=25mm
-        #fontsize: 12pt
-        #fontfamily: libertine
-        #linestretch: 1
-    html:
-        toc-depth: 3
-        #embed-resources: true
+format: html
 link-citations: true
 colorlinks: true
 citecolor: Maroon
