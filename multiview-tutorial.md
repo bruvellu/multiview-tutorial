@@ -18,8 +18,11 @@ urlcolor: MidnightBlue
 
 ## Summary {#sec-summary}
 
+Multiview reconstruction is the process of registering and fusing microscopy data acquired from multiple angles into a single, isotropic stack.
+
 This is a tutorial on how to register and fuse multiview lightsheet microscopy datasets using the plugin BigStitcher [@Preibisch2010-uu; @Horl2019-vx] in Fiji [@Schindelin2012-di].
-We will cover how to convert the raw data for visualization in the BigDataViewer [@Pietzsch2015-md], how to best detect interests points for registration, different approaches to register views, and how to fuse the views to reconstruct an isotropic dataset.
+
+We will cover how to convert the raw data for visualization in the BigDataViewer [@Pietzsch2015-md], how to best detect interests points for registration, the different approaches to register views, and how to fuse the views to reconstruct an isotropic dataset.
 
 ## Requirements {#sec-requirements}
 
@@ -45,30 +48,50 @@ We will cover how to convert the raw data for visualization in the BigDataViewer
 
 ### Download Fiji and BigStitcher
 
-::: {#fig-setup-fiji}
-
-{{< video "media/Video1-Start_Fiji_and_install_BigStitcher.mp4" >}}
-
-Start Fiji and install BigStitcher.
-
-:::
-
 - Go to https://fiji.sc
 - Choose Distribution: Stable
 - Click the big download button
 - Copy fiji-stable-linux64-jdk.zip to working directory and unzip it
+
+![](media/01-fiji-unzip.png)
+
 - Open the new directory fiji-stable-linux64-jdk/Fiji.app/
 - Double-click on fiji-linux-x64 launcher
 - Fiji will open
+
+![](media/02-fiji-open.png)
+
 - Click on Help > Update...
-- The updater will open and say if Fiji is up-to-date
+
+![](media/03-fiji-update.png)
+
+- The updater will run and open open and say if Fiji is up-to-date
 - Click Manage Update Sites
+
+![](media/04-fiji-manage.png)
+
 - A window will open with a list of plugins available to install in Fiji
+
+![](media/05-fiji-plugins.png)
+
 - Find BigSticher in the list and click on the checkbox
-- Click Apply and Close and then Apply Changes
+- Click Apply and Close 
+
+![](media/06-fiji-bigstitcher.png)
+
+- Then Apply Changes
+
+![](media/07-fiji-changes.png)
+
 - Wait… until the downloads are finished. Then, click OK
+
+![](media/08-fiji-ok.png)
+
 - Restart Fiji (close window and double-click the launcher)
 - Check if BigStitcher is installed under Plugins > BigStitcher
+
+![](media/09-fiji-ready.png)
+
 - You are ready!
 
 ## Inspect dataset {#sec-inspect-dataset}
