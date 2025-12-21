@@ -109,22 +109,51 @@ Inspect multiview dataset.
 ### Open file
 
 - Drag and drop the CZI file in Fiji’s main window
+
+![](media/10-open-czi.png)
+
 - A Bio-Formats Import Options should open
 - That’s the default importer for proprietary file formats
 - There are many options but for now simply click OK
+
+![](media/11-open-bioformats.png)
+
 - A Bio-Formats Series Options window will open 
 - Bio-Formats recognized that this file contains more than one view (series) and is asking which ones do we want to open
-- We just want to inspect one view since they will be quite simile, so simply press OK
+- We just want to inspect one view since they will be quite similar, so simply press OK
+
+![](media/12-open-series.png)
 
 ### Adjust contrast
 
 - A big window with a black background will open
 - Check if the dimensions were correctly assigned (information line at the top and sliders at the bottom)
+
+![](media/13-open-stack.png)
+
 - To see something, we first need to adjust the levels
 - Open the Brightness/Contrast (B&C) tool with Image > Adjust > Brightness/Contrast... (or ctrl+shift+c) and the Channels Tool with Image > Color > Channels Tool... (or ctrl+shift+z)
+
+![](media/14-stack-tools.png)
+
 - Press Reset to adjust the levels of Channel 1 then slide the Z position to the middle of the sample and press reset again
+
+::: {layout-ncol=2}
+
+![](media/15-stack-reset.png)
+
+![](media/16-stack-again.png)
+
+:::
+
 - Now move the Channel slider to Channel 2 and press Reset
+
+![](media/17-stack-channel.png)
+
 - In the Channels window change the menu Color to Composite
+
+![](media/18-stack-composite.png)
+
 - The sample is ready to be visualized
 
 ### Orthogonal views
@@ -132,9 +161,15 @@ Inspect multiview dataset.
 - To get a sense of the data tridimentionality we want to look at the XY, XZ, and YZ optical sections
 - Click on Image > Stacks > Orthogonal Views (or ctrl+shift+H)
 - It takes a moment. XZ and YZ panels will open
+
+![](media/19-stack-orthogonal.png)
+
 - Resize the main window to fit the screen
-- Explore the dataset by clicking and sliding the mouse pointer through the different images
 - The sample is a fly embryo which resembles a cylinder in 3D
+- Explore the dataset by clicking and sliding the mouse pointer through the different images
+
+![](media/20-stack-explore.png)
+
 - When done, please close the stack
 
 ## Define dataset {#sec-define-dataset}
@@ -145,7 +180,7 @@ Inspect multiview dataset.
 
 Define multiview dataset.
 
-::
+:::
 
 - Before we begin, we need to define a multiview dataset and resave the dataset
 - Defining multiview dataset will create an XML file where all the dataset metadata and information and data from the registration process will be stored
