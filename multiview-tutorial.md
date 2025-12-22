@@ -580,25 +580,43 @@ We will cover how to convert the raw data for visualization in the BigDataViewer
 
 ## Fuse dataset (all channels) {#sec-fuse-all}
 
-::: {#fig-fuse-all}
+- We have now both channels registered, but only one fused
+- To fuse both channels select all the views in the Multiview Explorer
 
-{{< video "media/Video11-Fuse_multiview_dataset_all_channels.mp4" >}}
+![](media/91-fuse-all.png)
 
-Fuse multiview dataset (all channels).
+- Then set the desired parameters for fusion (optimized previously) and run the fusion again as described above
+- This time there will be two files as output: avg_blend_1x_fused_tp_0_ch_0.tif and avg_blend_1x_fused_tp_0_ch_1.tif
+
+![](media/92-fuse-outputs.png)
+
+- Open both files in Fiji and adjust their contrast
+
+![](media/93-fuse-contrast.png)
+
+- Then go to Image > Color > Merge Channels...
+
+![](media/94-fuse-merge.png)
+
+- Select ch_0 for C1 and ch_1 for C2 and press OK
+
+![](media/95-fuse-merged.png)
+
+- A red-green 2-channel stack will open
+- As red-green isn’t good, use the LUT tool to update the colors to green for C1 and magenta for C2.
+
+::: {layout-ncol=2}
+
+![](media/96-fuse-redgreen.png)
+
+![](media/97-fuse-greenmagenta.png)
 
 :::
 
-- We have now both channels registered, but only one fused
-- To fuse both channels select all the views in the Multiview Explorer
-- Then set the desired parameters for fusion (optimized previously) and run the fusion again
-- This time there will be two files as output: avg_blend_1x_fused_tp_0_ch_0.tif and avg_blend_1x_fused_tp_0_ch_1.tif
-- Open both files in Fiji and adjust their contrast
-- Then go to Image > Color > Merge Channels...
-- Select ch_0 for C1 and ch_1 for C2 and press OK
-- A red-green 2-channel stack will open
-- As red-green isn’t good, use the LUT tool to update the colors to green for C1 and magenta for C2.
 - We can even compare this fused dataset with one single view of the original dataset.
 - Drag and drop the CZI file, select the first view only to import, and put the stacks side-by-side for a comparison slice by slice
+
+![](media/98-fuse-versus.png)
 
 ## References
 
