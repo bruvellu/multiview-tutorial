@@ -300,35 +300,43 @@ We will cover how to convert the raw data for visualization in the BigDataViewer
 
 ## Detect points {#sec-detect-points}
 
-::: {#fig-detect-points}
-
-{{< video "media/Video6-Detect_interest_points.mp4" >}}
-
-Detect interest points.
-
-:::
-
 - We can now start the first processing step of the pipeline, detecting points of interest to be used for the registration
 - The Multiview Explorer is always the starting point
-- Select the five views of channel 561 (if not selected), then right-click with the mouse
-- A long menu will appear. This is the main menu of BigStitcher. Anything that we select will only be applied to the selected views.
+- Select the five views of channel 561 (if not selected)
 - In this case, we want only the views of channel 2 to be selected since it is in this channel that the beads are visible
+- Then, then right click the rows with the mouse
+- A long menu will appear. This is the main menu of BigStitcher. Anything that we select will only be applied to the selected views.
 - After right-clicking, find the section Processing and select Detect Interest Points...
+
+![](media/42-detect-menu.png)
 
 - In this first window we can choose the type of detection (Default: Difference of Gaussian) and a label to describe these interest points
 - One dataset can have multiple sets of interest points
 - We will keep the default options and press OK
 
+![](media/43-detect-points.png)
+
 - We can set different parameters for the Difference of Gaussian approach
-- What is important to us at this point is to make sure that Interactive... is set for Interest point specification and that you change Downsample XY from Match Z Resolution (less downsampling) to 2x. The latter is not essential for all datasets but it works better for this dataset which has relatively high anisotropy (lower Z resolution compared to XY). Keep Downsample Z as 1x. Press OK.
+- What is important to us at this point is to make sure that Interactive... is set for Interest point specification and that you change Downsample XY from Match Z Resolution (less downsampling) to 2x. The latter is not essential for all datasets but it works better for this dataset which has relatively high anisotropy (lower Z resolution compared to XY). Keep Downsample Z as 1x.
+- Press OK
+
+![](media/44-detect-details.png)
+
 - In case, we can select which view we will open the interactive window and if we will load the entire stack. Simply press OK to load the entire first view
+
+![](media/45-detect-views.png)
 
 - A stack will open with a rectangular ROI placed at the top left corner
 - The ROI shows a live view of detected points for the current parameters Sigma and Threshold present in the other window
+
+![](media/46-detect-interactive.png)
+
 - Sigma is the size (radius) of the point and Threshold is the intensity-based cut value to discard low-quality detections
 - The default is to Find DoG maxima (red) or, in other words, bright spots. You can also find dark spots surrounded by bright areas (useful for some samples)
 - This is a normal ImageJ window, so you can zoom, adjust contrast, and if you lose the ROI you can simply draw a new rectangular ROI
 - You can drag the ROI around by clicking inside it and holding/dragging it 
+
+![](media/47-detect-zoom.png)
 
 - What we want to do now is to adjust the Sigma and Threshold so that most of the beads outside the embryo are properly detect with the least of spurious detections
 - The best way to begin is to zoom in into a bead outside the embryo and check if the circle size is matching well the bead. Move the Sigma slider, aiming for a circle slightly larger than the bead
@@ -337,10 +345,17 @@ Detect interest points.
 - Note that, no matter how much you tweak these parameters, there’ll always be many detections in the sample tissues. These non-bead detections will not have a strong influence on the registration given that you have enough detected real beads
 - Once satisfied, press Done
 
+![](media/48-detect-start.png)
+
 - Bead detection takes some time
 - Once DONE, go to the Multiview Explorer window and press Save
+
+![](media/49-detect-done.png)
+
 - This is important because the detections are initially saved in memory and will be only written to disk after pressing Save (detections are saved in a directory named interestpoints.n5)
 - You can notice that the column #InterestPoints in the Multiview Explorer now shows 1 for the five views of channel 561 (but not for channel 488)
+
+![](media/50-detect-increment.png)
 
 ## Register views {#sec-register-views}
 
