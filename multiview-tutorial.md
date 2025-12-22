@@ -548,23 +548,35 @@ We will cover how to convert the raw data for visualization in the BigDataViewer
 
 ## Duplicate transformation {#sec-duplicate-transformation}
 
-::: {#fig-duplicate-transformation}
-
-{{< video "media/Video10-Duplicate_transformation_to_other_channels.mp4" >}}
-
-Duplicate transformation to other channels.
-
-:::
-
 - Now that we have successfully registered and fused the views of one channel, we can simply apply the series of transformations to the other channel without the need to detect interest points or register the channel independently
+
+![](media/85-duplicate-unregistered.png)
+
 - You can do so using the tool Duplicate Transformations from BigStitcher
 - First, close the Multiview Explorer and the Select dataset window that pops-up
 - Then go to Plugins > BigStitcher > General > Tools > Duplicate Transformations
+
+![](media/86-duplicate-open.png)
+
 - Select the option One channel to other channels
+
+![](media/87-duplicate-channels.png)
+
 - A Select dataset window will open with the last dataset.xml already opened. Press OK
-- Now choose the source channel. Remember that we registered the Channel 561 (channel 2). The Target channel(s) is All Channels (all the other channels except for the source one). The last option, Duplicate which transformations is important. Generally, Replace all transformations work for most cases. However, I often prefer to use Add last transformation only. This will take the last transformation from the source channel and apply to the target channel. For this to work, the source channel can only be one transformation ahead of the target. If for instance, we ran two subsequent transformations for the source channel, then applying only the last would not duplicate all the transformations. Always check the #Registrations in the Multiview Explorer.
+
+![](media/88-duplicate-dataset.png)
+
+- Now choose the source channel. Remember that we registered the Channel 561 (channel 2).
+- The Target channel(s) is All Channels (all the other channels except for the source one).
+- The last option, Duplicate which transformations is important. Generally, Replace all transformations work for most cases. However, I often prefer to use Add last transformation only. This will take the last transformation from the source channel and apply to the target channel.
+- Note, however, that for this to work, the source channel can only be one transformation ahead of the target. If for instance, we ran two subsequent transformations for the source channel, then applying only the last would not duplicate all the transformations. Always check the #Registrations in the Multiview Explorer.
+
+![](media/89-duplicate-options.png)
+
 - Once you press OK, the transformations will be applied in the XML file. It’s quick.
 - Now open BigStitcher again and check if the 5 views of the other channel are registered (they should)
+
+![](media/90-duplicate-registered.png)
 
 ## Fuse dataset (all channels) {#sec-fuse-all}
 
