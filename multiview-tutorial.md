@@ -201,29 +201,35 @@ We will cover how to convert the raw data for visualization in the BigDataViewer
 
 ## Resave dataset {#sec-resave-dataset}
 
-::: {#fig-resave-dataset}
-
-{{< video "media/Video4-Resave_multiview_dataset.mp4" >}}
-
-Resave multiview dataset.
-
-:::
-
 - Next, we need to convert the actual image, which is still stored in the CZI, to a format that allow us to open and visualize this heavy dataset in an efficient and lightweight manner
 - For that, we will resave the data into HDF5 format
 - Go to Plugins > BigStitcher > I/O > Resave as HDF5 (local)
+
+![](media/27-resave-start.png)
+
 - The new window Select dataset for Resaving as HDF5 will automatically load the last used XML file, in this case, our `dataset.xml`
-- Here you can choose whether you want to convert every angle, all channels, all timepoints, or only a subset of those
-- We want it all
-- Press OK
+- You can choose whether you want to convert every angle, all channels, all timepoints, or only a subset of those
+- We want it all, press OK
+
+![](media/28-resave-all.png)
+
 - Another window will appear with some resaving options 
 - Leave the options as is, but make sure that the Export path is pointing to the `dataset.xml` file (click on Browse and, if the file is not selected, navigate and select `dataset.xml`)
 - Press OK and wait...
+
+![](media/29-resave-file.png)
+
 - Resaving this dataset takes about 3 min. But consider that larger datasets will take significantly longer (with several timepoints, for example)
 - The Log window will show that it’s done
+
+![](media/30-resave-done.png)
+
 - Note that another XML file named `dataset.xml~1` and a new HDF5 file named `dataset.h5` were created
 - Every time the dataset file is saved, BigStitcher creates a backup copy. `dataset.xml~1` was the original dataset.xml which was renamed after the resaving
-- If you inspect the new dataset.xml you will see that it now points to the dataset.h5 file
+- If you inspect the new dataset.xml in a Text Editor you will see that it now points to the dataset.h5 file
+
+![](media/31-resave-xml.png)
+
 - Whenever we refere to the multiview dataset we are referring to the XML/HDF5 pair
 
 ## Visualize dataset {#sec-visualize-dataset}
