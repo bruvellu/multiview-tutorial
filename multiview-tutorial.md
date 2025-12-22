@@ -1,5 +1,5 @@
 ---
-title: Multiview reconstruction using BigStitcher in Fiji
+title: Multiview reconstruction using BigStitcher
 author: Bruno C. Vellutini
 date: today
 date-format: long
