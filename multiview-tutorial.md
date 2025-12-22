@@ -74,7 +74,7 @@ We will cover how to convert the raw data for visualization in the BigDataViewer
 
 ![](media/05-fiji-plugins.png)
 
-- Find BigSticher in the list and click on the checkbox
+- Find BigStitcher in the list and click on the checkbox
 - Click Apply and Close 
 
 ![](media/06-fiji-bigstitcher.png)
@@ -148,7 +148,7 @@ We will cover how to convert the raw data for visualization in the BigDataViewer
 
 - The sample is ready to be visualized
 
-### Orthogonal views
+### Open orthogonal views
 
 - To get a sense of the data tridimentionality we want to look at the XY, XZ, and YZ optical sections
 - Click on Image > Stacks > Orthogonal Views (or ctrl+shift+H)
@@ -168,7 +168,7 @@ We will cover how to convert the raw data for visualization in the BigDataViewer
 
 - Before we begin, we need to define a multiview dataset and resave the dataset
 - Defining multiview dataset will create an XML file where all the dataset metadata and information and data from the registration process will be stored
-- Go to Plugins > BigSticher > General > Define Multi-View Dataset
+- Go to Plugins > BigStitcher > General > Define Multi-View Dataset
 
 ![](media/21-dataset-define.png)
 
@@ -234,40 +234,69 @@ We will cover how to convert the raw data for visualization in the BigDataViewer
 
 ## Visualize dataset {#sec-visualize-dataset}
 
-::: {#fig-visualize-dataset}
-
-{{< video "media/Video5-Visualize_multiview_dataset_with_BigDataViewer.mp4" >}}
-
-Visualize multiview dataset with BigDataViewer.
-
-:::
-
 - We can finally open the main BigStitcher application
+
+### Start BigStitcher
+
 - Go to Plugins > BigStitcher > BigStitcher
+
+![](media/32-bigstitcher-start.png)
+
 - The last dataset.xml file will be automatically loaded in the select dataset window, click OK
+
+![](media/33-bigstitcher-latest.png)
+
 - This will open two windows, the BigDataViewer and the Multiview Explorer
+
+![](media/34-bigstitcher-windows.png)
+
 - The Multiview Explorer shows a table with the individual views of the dataset. We have 5 views, each with 2 channels. Therefore, we have in total 10 views.
 - Clicking in a row will show the data in the BigDataViewer. You can select multiple rows freely. You can also sort the table by channel or angle for example
-- Sselect the five views from Channel 561 (channel 2)
+- Select the five views from Channel 561 (channel 2)
+
+![](media/35-bigstitcher-bright.png)
+
 - The image is too bright, we need to adjust the contrast
-- For that, go to Settings > Brightness & Color, and change the max value of channel 2 to 2500
+- For that, go to Settings > Brightness & Color
+- A new window will open
+
+![](media/36-bigstitcher-contrast.png)
+
+- Change the max value of channel 2 to 2500
+
+![](media/37-bigstitcher-adjusted.png)
 
 - Now we can visualize the dataset in more detail
+
+### Learn BigDataViewer
+
 - It is important to familiarize yourself with the BigDataViewer commands and shortcuts 
 - BigDataViewer is very intuitive to use but a quick look at the Help is important to not get lost
 - Some of the most important commands are as follow:
 - Shift+X, Shift+Y, Shift+Z: That’s your compass. If you get lost, pressing one of these shortcuts will get you back to the original XY, YZ, ZX orientation
 - In this scope the rotation axis is Y
 - Therefore, pressing shift+y will show you the separate angles
+
+![](media/38-bigstitcher-shifty.png)
+
 - Hold left mouse button to rotate the data around the pointer
 - Hold right mouse button to drag the view
 - Ctrl+shift+scroll+up or down will zoom in/out fast (don’t use shift for normal speed)
-
 - Tip, select the Explorer window with the five views selected and press C. This will autocolor the views which is great for visualization
 - Tip, select the BigDataViewer and press i to activate interpolation for better visualization
 
+::: {layout-ncol=2}
+
+![](media/39-bigstitcher-nearest.png)
+
+![](media/40-bigstitcher-interpolation.png)
+
+:::
+
 - Take some time to explore the data, the different views, zoom in and out, find the beads, and get familiar with the BigDataViewer
 - Then finish with the 5-views oriented as in the image
+
+![](media/41-bigstitcher-ready.png)
 
 ## Detect points {#sec-detect-points}
 
