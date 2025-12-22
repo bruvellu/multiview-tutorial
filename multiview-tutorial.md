@@ -432,22 +432,78 @@ Set bounding box.
 
 - Our dataset is registered, but before fusing the views it is important to set a bounding box around the sample. This reduces the final dimensions and file size of the fused data.
 - For that, right-click and select Define Bounding Box... 
+
+![](media/62-bounding-menu.png)
+
 - We want to define it interactively, so leave the Bounding Box option as isotropic
 - You can give the bounding box a custom name and define different bounding boxes for different purposes, but the default name is good enough for this tutorial. Click OK
+
+![](media/63-bounding-interactive.png)
+
 - Two windows will open: BigDataViewer with the sample and some purple shade and a bounding box window full of sliders
+
+![](media/64-bounding-box.png)
+
 - For defining the bounding box I follow a specific procedure, always in the same order, to avoid inadvertently leaving out a part of your sample when fusing
 - First, press shift+x to orient the sample on XY
+
+![](media/65-bounding-shiftx.png)
+
 - Go through the sample (Z) top to bottom to get a sense of the entire volume and stop back at the middle
+
+::: {layout-ncol=3}
+
+![](media/66-bounding-top.png)
+
+![](media/67-bounding-mid.png)
+
+![](media/68-bounding-bottom.png)
+
+:::
+
 - Move the x min slider to the right to cut out the region on the left of the sample (the dashed line is the reference edge). Get close to the sample, but leave a gap
+
+![](media/69-bounding-xmin.png)
+
 - Once the placed x min, go again top to bottom through Z to make sure nothing was cut out
 - Now do the same of x max to cut out the region on the right side of the sample
+
+![](media/70-bounding-xmax.png)
+
 - Next we want to cut a bit from the top and bottom regions
 - Move the slider y min to cut from the top and y max to cut from the bottom. Remember to go through Z to make sure it is not cutting the tip off the embryo (it happens)
+
+::: {layout-ncol=2}
+
+![](media/71-bounding-ymin.png)
+
+![](media/72-bounding-ymax.png)
+
+:::
+
 - Finally, press shift+y to cut out the exceeding portions in the Z direction
+
+![](media/73-bounding-shifty.png)
+
 - Use z min to cut from the top (in this orientation), always going through Y to check!
 - Then adjust z max to cut from the bottom (in this orientation), also going through Y.
-- When done, press ok in the bounding box window
-- The dimensions of the interactively defined bounding box and the estimated sized of the fused image will appear. Press OK and Save
+
+::: {layout-ncol=2}
+
+![](media/74-bounding-zmin.png)
+
+![](media/75-bounding-zmax.png)
+
+:::
+
+- When done, press OK in the bounding box window
+
+![](media/76-bounding-ok.png)
+
+- The dimensions of the interactively defined bounding box and the estimated sized of the fused image will appear.
+- Press OK and Save
+
+![](media/77-bounding-dimensions.png)
 
 ## Fuse dataset (one channel) {#sec-fuse-single}
 
