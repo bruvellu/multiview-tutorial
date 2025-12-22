@@ -359,36 +359,66 @@ We will cover how to convert the raw data for visualization in the BigDataViewer
 
 ## Register views {#sec-register-views}
 
-::: {#fig-register-views}
-
-{{< video "media/Video7-Register_views_using_interest_points.mp4" >}}
-
-Register views using interest points.
-
-:::
-
 - Now we can try to register these views using the detected interest points
 - With the 5-views selected, right-click and run Register using Interest Points...
+
+![](media/51-register-menu.png)
+
 - We can change different registration parameters like the algorithm to be used or the specific set of previously interest points
 - We want to go with the default Fast descriptor-based (rotation invariant) Registration algorithm as it works well for bead-based registration with Z.1 datasets
 - Since our views are very further apart with almost no overlap, we want to change the option Registration in between views to Compare all views against each other
 - Leave the other options as is making sure we are using the Interest points labeled as `beads`
 - Click OK
+
+![](media/52-register-type.png)
+
 - A novel window will open with several other parameters to tweak. Please refer to the BigStitcher documentation for the specific function of these
 - For us, it is important to note two. The option Fix views set to Fix first view means that all other views will be mapped to the first angle. And the Transformation model set to Affine means that the data will be transformed non-rigidly to fit the individual views. This is important since different portions of the stack might have a certain degree of distortion from the objective lenses and an affine transformation helps to fit the views better together
 - The other parameters we will only need to change if our registration fails
 - Press OK
+
+![](media/53-register-affine.png)
+
 - This small window with Regularization Parameters can be kept as is (Rigid and 0.10). Press OK
 - Same for the interest point grouping options. Press OK
+
+::: {layout-ncol=2}
+
+![](media/54-register-regularization.png)
+
+![](media/55-register-grouping.png)
+
+::: 
+
 - The registration will begin and be over in a few seconds. Don’t blink or you will miss it! If successful, you will see that the individual views will now have moved over (registered) the first view and they are all overlapping in the BigDataViewer window
+
+::: {layout-ncol=2}
+
+![](media/56-register-before.png)
+
+![](media/57-register-after.png)
+
+::: 
 
 - Now that the views are registered, explore the dataset to verify that the registration worked well. The best way to do this is visually
 - One of the first things that you can do is to press shift+y and zoom in into a bead close to the embryo’s surface
-- You will see the point spread function of one bead in each individual view forming a star with generally four views (as the fifth view is too further away). If the sample is registered well, the center of the point spread functions of the different views should match in the middle of the star
+
+![](media/58-register-check.png)
+
+- You will see the point spread function of one bead in each individual view forming a star with generally four views (as the fifth view is too further away).
+- If the sample is registered well, the center of the point spread functions of the different views should match in the middle of the star
+
+![](media/59-register-bead.png)
+
 - Another thing that you can do is to find a structure you know well in the sample and check that the tissues are actually registered. It can happen that the beads are nicely registered, but the tissues themselves are a bit off
 - One way to do this is to select only two contiguous views and check them closely
 - When done, make sure to Save the project again
+
+![](media/60-register-save.png)
+
 - After saving, the #Registrations column should now show the number 3 for the selected views (if not deselect and select them again to update the counter)
+
+![](media/61-register-increment.png)
 
 ## Set bounding box {#sec-set-bounding}
 
