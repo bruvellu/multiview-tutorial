@@ -422,14 +422,6 @@ We will cover how to convert the raw data for visualization in the BigDataViewer
 
 ## Set bounding box {#sec-set-bounding}
 
-::: {#fig-set-bounding}
-
-{{< video "media/Video8-Set_bounding_box.mp4" >}}
-
-Set bounding box.
-
-:::
-
 - Our dataset is registered, but before fusing the views it is important to set a bounding box around the sample. This reduces the final dimensions and file size of the fused data.
 - For that, right-click and select Define Bounding Box... 
 
@@ -507,18 +499,19 @@ Set bounding box.
 
 ## Fuse dataset (one channel) {#sec-fuse-single}
 
-::: {#fig-fuse-single}
-
-{{< video "media/Video9-Fuse_multiview_dataset_one_channel.mp4" >}}
-
-Fuse multiview dataset.
-
-:::
-
 - Finally, let’s begin the fusing of registered views
-- Select the five registered views in the Multiview Explorer, right-click and press Image Fusion... the window with fusion options will appear
+- Select the five registered views in the Multiview Explorer, right-click and press Image Fusion...
+
+![](media/78-fuse-menu.png)
+
+- The window with fusion options will appear
+
+![](media/79-fuse-options.png)
+
 - Our “My Bounding Box” is automatically selected for the Bounding Box
-- We can choose to downsample the fused image. I highly recommend downsampling 2x, 4x, or even 8x, depending on the dataset, if you are fusing a dataset for the first time. Fusing without downsampling (1x) can take a really long time for large samples (many hours), so it is good practice to downsample the fused image to make sure the fusing parameters are good for your dataset before fusing the whole thing. For this tutorial I recommend going for 2x downsampling 
+- We can choose to downsample the fused image. I highly recommend downsampling 2x, 4x, or even 8x, depending on the dataset, if you are fusing a dataset for the first time.
+- Fusing without downsampling (1x) can take a really long time for large samples (many hours), so it is good practice to downsample the fused image to make sure the fusing parameters are good for your dataset before fusing the whole thing.
+- But for this tutorial, you can leave at 1x
 - For Interpolation leave Linear interpolation as it gives better outputs
 - Fusion type is an important parameter to choose wisely
 - The simplest is Avg, which averages the signal of every view per pixel. This is quick but it is combining the good contrast of one view with the blurred side of another view and the resulting contrast will be suboptimal.
@@ -530,11 +523,28 @@ Fuse multiview dataset.
 - Generally, we want to have one fused image per timepoint per channel
 - And I always Save as (compressed) TIFF stacks for the Fused image option. Choosing Display using ImageJ can be dangerous as the fused image will be large and your computer can run out of memory and crash. Writing to disk is safer.
 - After pressing OK there’ll be another window to define the min/max levels, but they are automatically detected. Press OK
+
+![](media/80-fuse-minmax.png)
+
 - The output directory will be the same where the dataset.xml is. You can add a Filename addition to distinguish different types of fusion and downsampling (useful when doing it multiple times)
 - Press OK and fusion will start
-- Once done, drag and drop the fused dataset in Fiji to open it
-- Adjust the contrast with the Brightness/Contrast tool and inspect the fusion result, checking for artifacts. If your sample has a membrane staining, for example, check for doubled membranes
+
+![](media/81-fuse-filename.png)
+
+- Once done, drag and drop the fused dataset named `avg_blend_1x_fused_tp_0_ch_1` in Fiji to open it and adjust the contrast with the Brightness/Contrast tool to see the data
+
+::: {layout-ncol=2}
+
+![](media/82-fuse-open.png)
+
+![](media/83-fuse-contrast.png)
+
+:::
+
+- Inspect the fusion result, checking for artifacts. If your sample has a membrane staining, for example, check for doubled membranes
 - Note that this is an isotropic dataset
+
+![](media/84-fuse-isotropic.png)
 
 ## Duplicate transformation {#sec-duplicate-transformation}
 
