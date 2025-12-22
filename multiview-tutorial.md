@@ -96,14 +96,6 @@ We will cover how to convert the raw data for visualization in the BigDataViewer
 
 ## Inspect dataset {#sec-inspect-dataset}
 
-::: {#fig-inspect-dataset}
-
-{{< video "media/Video2-Inspect_multiview_dataset.mp4" >}}
-
-Inspect multiview dataset.
-
-:::
-
 - Now let’s first inspect the dataset in Fiji
 
 ### Open file
@@ -174,25 +166,37 @@ Inspect multiview dataset.
 
 ## Define dataset {#sec-define-dataset}
 
-::: {#fig-define-dataset}
-
-{{< video "media/Video3-Define_multiview_dataset.mp4" >}}
-
-Define multiview dataset.
-
-:::
-
 - Before we begin, we need to define a multiview dataset and resave the dataset
 - Defining multiview dataset will create an XML file where all the dataset metadata and information and data from the registration process will be stored
 - Go to Plugins > BigSticher > General > Define Multi-View Dataset
+
+![](media/21-dataset-define.png)
+
 - A window named Choose method to define dataset will open
 - On the Define Dataset using field choose Zeiss Lightsheet Z.1 Dataset Loader (Bioformats) from the dropdown menu, since our testing dataset is from Zeiss Lightsheet Z.1, then press OK
+
+![](media/22-dataset-zeiss.png)
+
 - Click browse in the next window, select the CZI file, and press OK
+
+![](media/23-dataset-browse.png)
+
 - BigStitcher will read the metadata of the CZI and show a dialog with the details
 - Check that five angles are present, that there are two channels and that the XYZ resolution matches the expected values (see above)
 - Then press OK
+
+![](media/24-dataset-metadata.png)
+
 - If you look into the working directory, an XML file named `dataset` will have appeared there 
-- You can open this file in a text editor to see the information stored there like the file name, the image dimensions and the XYZ resolution
+
+![](media/25-dataset-xml.png)
+
+- You can open this file in a text editor to see the information stored there
+- Right-click the file, select Open With... and choose Text Editor
+- The file has the file name, the image dimensions, the XYZ resolution, etc
+
+![](media/26-dataset-contents.png)
+
 - Note that the XML only stores metadata from the dataset and not the actual image data
 
 ## Resave dataset {#sec-resave-dataset}
