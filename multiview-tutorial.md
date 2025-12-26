@@ -10,6 +10,7 @@ toc-depth: 3
 bibliography: references.bib
 lang: en
 format: html
+lightbox: true
 link-citations: true
 colorlinks: true
 citecolor: Maroon
