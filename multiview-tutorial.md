@@ -1,15 +1,15 @@
 ---
 title: Multiview reconstruction using BigStitcher
 author: Bruno C. Vellutini
-date: today
+date: 29 December 2025
 date-format: long
 created: 12 August 2025
 modified: today
-toc: true
-toc-depth: 3
-bibliography: references.bib
 lang: en
 format: html
+toc: true
+toc-depth: 4
+bibliography: references.bib
 lightbox: true
 link-citations: true
 colorlinks: true
@@ -27,60 +27,46 @@ We will cover how to convert the raw data for visualization in the BigDataViewer
 
 ## Requirements {#sec-requirements}
 
-- Multiview lightsheet dataset
-- Fiji/ImageJ
-- BigStitcher plugin
+- [Fiji](https://fiji.sc) [@Schindelin2012-di]
+- [BigStitcher ](https://imagej.net/plugins/bigstitcher) plugin [@Preibisch2010-uu; @Horl2019-vx]
+- [Multiview Lightsheet]() dataset [@Vellutini2025]
 
 ## Setup {#sec-setup}
 
-### Define working directory 
+### Install Fiji
 
-- Create a directory in your computer to put the files needed for this tutorial.
-
-### Download dataset
-
-- Go to Zenodo URL and download 5angles-beads dataset
-- Unzip the file to your working directory
-- You should see a single CZI file named Dmel_Gap43-mCherry_5Angles_2Channels_1Timepoint_60Slices_Beads
-- As described in the file name, this single CZI file contains 5 different angles, each with 2 channels and a single timepoint with 60 z-slices
-- The XY resolution is 0.276 µm and the Z resolution is 3 µm
-- The dataset also has fluorescent beads around the sample, which we will use to register the views
-- The dataset is ready
-
-### Download Fiji and BigStitcher
-
-- Go to https://fiji.sc
-- Choose Distribution: Stable
-- Click the big download button
-- Copy fiji-stable-linux64-jdk.zip to working directory and unzip it
+- Go to <https://fiji.sc>, choose `Distribution: Stable`, and click the download button.
+- Copy the downloaded archive to your working directory and unzip it.
 
 ![](media/01-fiji-unzip.png)
 
-- Open the new directory fiji-stable-linux64-jdk/Fiji.app/
-- Double-click on fiji-linux-x64 launcher
-- Fiji will open
+- Open the `Fiji.app` directory and double-click on the launcher.
 
 ![](media/02-fiji-open.png)
+
+The main window of Fiji will open.
+
+### Install BigStitcher
 
 - Click on Help > Update...
 
 ![](media/03-fiji-update.png)
 
-- The updater will run and open open and say if Fiji is up-to-date
-- Click Manage Update Sites
+The updater will run and say if Fiji is up-to-date.
+
+- Click on Manage Update Sites
 
 ![](media/04-fiji-manage.png)
 
-- A window will open with a list of plugins available to install in Fiji
+A window will open with a list of plugins available to install in Fiji.
 
 ![](media/05-fiji-plugins.png)
 
-- Find BigStitcher in the list and click on the checkbox
-- Click Apply and Close 
+- Find BigStitcher in the list and click on the checkbox and Apply and Close 
 
 ![](media/06-fiji-bigstitcher.png)
 
-- Then Apply Changes
+- Then click on Apply Changes
 
 ![](media/07-fiji-changes.png)
 
@@ -93,11 +79,17 @@ We will cover how to convert the raw data for visualization in the BigDataViewer
 
 ![](media/09-fiji-ready.png)
 
-- You are ready!
+Fiji and BigSticher are ready!
+
+### Download dataset
+
+- `Dmel_btd-gap_1tp_5v_2c_beads.czi` dataset from this [Zenodo repository](https://doi.org/10.5281/zenodo.18078062) [@Vellutini2025]. The direct link to the file is [here](https://zenodo.org/records/18078062/files/Dmel_btd-gap_1tp_5v_2c_beads.czi?download=1) (3.2GB).
 
 ## Inspect dataset {#sec-inspect-dataset}
 
-- Now let’s first inspect the dataset in Fiji
+The dataset is a single CZI file that contains a single timepoint with 5 different views, each view with 2 channels and 60 slices. The XY resolution is 0.276 µm and the Z resolution is 3 µm. The dataset has fluorescent beads around the sample, which we will use to register the views.
+
+Let’s inspect the dataset in Fiji.
 
 ### Open file
 
@@ -105,31 +97,33 @@ We will cover how to convert the raw data for visualization in the BigDataViewer
 
 ![](media/10-open-czi.png)
 
-- A Bio-Formats Import Options should open
-- That’s the default importer for proprietary file formats
-- There are many options but for now simply click OK
+A Bio-Formats Import Options should open. That’s the default importer for proprietary file formats with many options, but for now we go with the default.
+
+- Press OK
 
 ![](media/11-open-bioformats.png)
 
-- A Bio-Formats Series Options window will open 
-- Bio-Formats recognized that this file contains more than one view (series) and is asking which ones do we want to open
-- We just want to inspect one view since they will be quite similar, so simply press OK
+A Bio-Formats Series Options window will open. Bio-Formats recognized that this file contains more than one view (series) and is asking which ones do we want to open. We just want to inspect the first view since they will be quite similar.
+
+- Press OK
 
 ![](media/12-open-series.png)
 
 ### Adjust contrast
 
-- A big window with a black background will open
+A big window with a black background will open.
+
 - Check if the dimensions were correctly assigned (information line at the top and sliders at the bottom)
 
 ![](media/13-open-stack.png)
 
-- To see something, we first need to adjust the levels
-- Open the Brightness/Contrast (B&C) tool with Image > Adjust > Brightness/Contrast... (or ctrl+shift+c) and the Channels Tool with Image > Color > Channels Tool... (or ctrl+shift+z)
+To see something, we first need to adjust the levels.
+
+- Open the `Brightness/Contrast (B&C)` tool with `Image` > `Adjust` > `Brightness/Contrast...` (or `ctrl+shift+c`) and the `Channels Tool` with `Image` > `Color` > `Channels Tool...` (or `ctrl+shift+z`)
 
 ![](media/14-stack-tools.png)
 
-- Press Reset to adjust the levels of Channel 1 then slide the Z position to the middle of the sample and press reset again
+- Press `Reset` to adjust the levels of `Channel 1` then slide the Z position to the middle of the sample and press `Reset` again
 
 ::: {layout-ncol=2}
 
@@ -143,142 +137,153 @@ We will cover how to convert the raw data for visualization in the BigDataViewer
 
 ![](media/17-stack-channel.png)
 
-- In the Channels window change the menu Color to Composite
+- In the Channels window, change the menu Color to Composite
 
 ![](media/18-stack-composite.png)
 
-- The sample is ready to be visualized
+The sample is ready to be visualized.
 
 ### Open orthogonal views
 
-- To get a sense of the data tridimentionality we want to look at the XY, XZ, and YZ optical sections
-- Click on Image > Stacks > Orthogonal Views (or ctrl+shift+H)
-- It takes a moment. XZ and YZ panels will open
+To get a sense of the data tridimentionality we want to look at the XY, XZ, and YZ optical sections.
+
+- Click on `Image` > `Stacks` > `Orthogonal Views` (or ctrl+shift+H). It takes a moment; XZ and YZ panels will open.
 
 ![](media/19-stack-orthogonal.png)
 
 - Resize the main window to fit the screen
-- The sample is a fly embryo which resembles a cylinder in 3D
-- Explore the dataset by clicking and sliding the mouse pointer through the different images
 
 ![](media/20-stack-explore.png)
 
-- When done, please close the stack
+The sample is a fly embryo which resembles a cylinder in 3D.
+
+- Explore the dataset by clicking and sliding the mouse pointer through the different images
+- When done, close the stack
 
 ## Define dataset {#sec-define-dataset}
 
-- Before we begin, we need to define a multiview dataset and resave the dataset
-- Defining multiview dataset will create an XML file where all the dataset metadata and information and data from the registration process will be stored
-- Go to Plugins > BigStitcher > General > Define Multi-View Dataset
+Before we begin, we need to define a multiview dataset and resave the dataset. Defining a multiview dataset will create an XML file where all the dataset metadata and information and data from the registration process will be stored.
+
+- Go to `Plugins` > `BigStitcher` > `General` > `Define Multi-View Dataset`
 
 ![](media/21-dataset-define.png)
 
-- A window named Choose method to define dataset will open
-- On the Define Dataset using field choose Zeiss Lightsheet Z.1 Dataset Loader (Bioformats) from the dropdown menu, since our testing dataset is from Zeiss Lightsheet Z.1, then press OK
+A window named Choose method to define dataset will open.
+
+- On the `Define Dataset` field choose `Zeiss Lightsheet Z.1 Dataset Loader (Bioformats)` from the dropdown menu, since our testing dataset is from Zeiss Lightsheet Z.1
+- Then, press OK
 
 ![](media/22-dataset-zeiss.png)
 
-- Click browse in the next window, select the CZI file, and press OK
+- Click browse, select the CZI file, and press OK
 
 ![](media/23-dataset-browse.png)
 
-- BigStitcher will read the metadata of the CZI and show a dialog with the details
-- Check that five angles are present, that there are two channels and that the XYZ resolution matches the expected values (see above)
-- Then press OK
+BigStitcher will read the metadata of the CZI and show a dialog with the details.
+
+- Check if five angles are present, if there are two channels, and if the XYZ resolution matches the expected values (see above)
+- Then, press OK
 
 ![](media/24-dataset-metadata.png)
 
-- If you look into the working directory, an XML file named `dataset` will have appeared there 
+If we look into the working directory, an XML file named `dataset` will have appeared there.
 
 ![](media/25-dataset-xml.png)
 
-- You can open this file in a text editor to see the information stored there
-- Right-click the file, select Open With... and choose Text Editor
+We can open this file in a text editor to see the information stored there.
+
+- Right-click the file, select `Open With...` and choose `Text Editor`
 - The file has the file name, the image dimensions, the XYZ resolution, etc
 
 ![](media/26-dataset-contents.png)
 
-- Note that the XML only stores metadata from the dataset and not the actual image data
+Note: the XML only stores metadata from the dataset and not the actual image data.
 
 ## Resave dataset {#sec-resave-dataset}
 
-- Next, we need to convert the actual image, which is still stored in the CZI, to a format that allow us to open and visualize this heavy dataset in an efficient and lightweight manner
-- For that, we will resave the data into HDF5 format
-- Go to Plugins > BigStitcher > I/O > Resave as HDF5 (local)
+Next, we need to convert the actual image, which is still stored in the CZI, to a format that allow us to open and visualize this heavy dataset in an efficient and lightweight manner. For that, we will resave the data into HDF5 format.
+
+- Go to `Plugins` > `BigStitcher` > `I/O` > `Resave as HDF5 (local)`
 
 ![](media/27-resave-start.png)
 
-- The new window Select dataset for Resaving as HDF5 will automatically load the last used XML file, in this case, our `dataset.xml`
-- You can choose whether you want to convert every angle, all channels, all timepoints, or only a subset of those
+The new window Select dataset for Resaving as HDF5 will automatically load the last used XML file, in this case, our `dataset.xml`. We can choose whether we want to convert every angle, all channels, all timepoints, or only a subset of those.
+
 - We want it all, press OK
 
 ![](media/28-resave-all.png)
 
-- Another window will appear with some resaving options 
-- Leave the options as is, but make sure that the Export path is pointing to the `dataset.xml` file (click on Browse and, if the file is not selected, navigate and select `dataset.xml`)
+Another window will appear with some resaving options. Leave the options as is, but make sure that the Export path is pointing to the `dataset.xml` file.
+
+- Click on Browse and, if the file is not selected, navigate and select `dataset.xml`
 - Press OK and wait...
 
 ![](media/29-resave-file.png)
 
-- Resaving this dataset takes about 3 min. But consider that larger datasets will take significantly longer (with several timepoints, for example)
-- The Log window will show that it’s done
+Resaving this dataset takes about 3 min. However, larger datasets with several timepoints, for example, will take significantly longer. The Log window will show that it’s done.
 
 ![](media/30-resave-done.png)
 
-- Note that another XML file named `dataset.xml~1` and a new HDF5 file named `dataset.h5` were created
-- Every time the dataset file is saved, BigStitcher creates a backup copy. `dataset.xml~1` was the original dataset.xml which was renamed after the resaving
-- If you inspect the new dataset.xml in a Text Editor you will see that it now points to the dataset.h5 file
+Note that another XML file named `dataset.xml~1` and a new HDF5 file named `dataset.h5` were created. Every time the dataset file is saved, BigStitcher creates a backup copy. `dataset.xml~1` was the original dataset.xml which was renamed after the resaving. If we inspect the new `dataset.xml` in a Text Editor we will see that it now points to the dataset.h5 file
+
+- Open the new `dataset.xml` in a text editor
 
 ![](media/31-resave-xml.png)
 
-- Whenever we refere to the multiview dataset we are referring to the XML/HDF5 pair
+Whenever we refer to the multiview dataset, we mean the XML/HDF5 pair; they are always together.
 
 ## Visualize dataset {#sec-visualize-dataset}
 
-- We can finally open the main BigStitcher application
+We can finally open the main BigStitcher application and begin the multiview reconstruction.
 
 ### Start BigStitcher
 
-- Go to Plugins > BigStitcher > BigStitcher
+- Go to `Plugins` > `BigStitcher` > `BigStitcher`
 
 ![](media/32-bigstitcher-start.png)
 
-- The last dataset.xml file will be automatically loaded in the select dataset window, click OK
+The last dataset.xml file will be automatically loaded in the select dataset window
+
+- Click OK
 
 ![](media/33-bigstitcher-latest.png)
 
-- This will open two windows, the BigDataViewer and the Multiview Explorer
+This will open two windows, the BigDataViewer and the Multiview Explorer.
 
 ![](media/34-bigstitcher-windows.png)
 
-- The Multiview Explorer shows a table with the individual views of the dataset. We have 5 views, each with 2 channels. Therefore, we have in total 10 views.
-- Clicking in a row will show the data in the BigDataViewer. You can select multiple rows freely. You can also sort the table by channel or angle for example
-- Select the five views from Channel 561 (channel 2)
+The Multiview Explorer shows a table with the individual views of the dataset. We have 5 views, each with 2 channels. Therefore, we have in total 10 views. Clicking in a row will show the data in the BigDataViewer. We can also sort the table by channel or angle.
+
+- Select multiple rows freely and try sorting it
+- Then, select the five views from Channel 561 (channel 2)
 
 ![](media/35-bigstitcher-bright.png)
 
-- The image is too bright, we need to adjust the contrast
-- For that, go to Settings > Brightness & Color
-- A new window will open
+The image is too bright, we need to adjust the contrast.
+
+- Go to `Settings` > `Brightness & Color`
 
 ![](media/36-bigstitcher-contrast.png)
+
+A new window will open.
 
 - Change the max value of channel 2 to 2500
 
 ![](media/37-bigstitcher-adjusted.png)
 
-- Now we can visualize the dataset in more detail
+Now we can visualize the dataset in more detail.
 
 ### Learn BigDataViewer
 
-- It is important to familiarize yourself with the BigDataViewer commands and shortcuts 
-- BigDataViewer is very intuitive to use but a quick look at the Help is important to not get lost
-- Some of the most important commands are as follow:
-- Shift+X, Shift+Y, Shift+Z: That’s your compass. If you get lost, pressing one of these shortcuts will get you back to the original XY, YZ, ZX orientation
-- In this scope the rotation axis is Y
-- Therefore, pressing shift+y will show you the separate angles
+It is important to familiarize yourself with the BigDataViewer commands and shortcuts. BigDataViewer is very intuitive to use but a quick look at the Help is important to not get lost.
+
+Shift+X, Shift+Y, Shift+Z are our compass. If we get lost, pressing one of these shortcuts will get us back to the original XY, YZ, ZX orientation. In this scope the rotation axis is Y. Therefore, pressing shift+y will show the different angles from “above”.
+
+- Press shift+y and adjust the view to see the five angles
 
 ![](media/38-bigstitcher-shifty.png)
+
+Some of the most important commands are as follow:
 
 - Hold left mouse button to rotate the data around the pointer
 - Hold right mouse button to drag the view
