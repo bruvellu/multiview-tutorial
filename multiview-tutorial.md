@@ -62,7 +62,7 @@ A window will open with a list of plugins available to install in Fiji.
 
 ![](media/05-fiji-plugins.png)
 
-- Find BigStitcher in the list and click on the checkbox and Apply and Close 
+- Find BigStitcher in the list and click on the checkbox and Apply and Close
 
 ![](media/06-fiji-bigstitcher.png)
 
@@ -285,11 +285,10 @@ Shift+X, Shift+Y, Shift+Z are our compass. If we get lost, pressing one of these
 
 Some of the most important commands are as follow:
 
-- Hold left mouse button to rotate the data around the pointer
-- Hold right mouse button to drag the view
-- Ctrl+shift+scroll+up or down will zoom in/out fast (don’t use shift for normal speed)
-- Tip, select the Explorer window with the five views selected and press C. This will autocolor the views which is great for visualization
-- Tip, select the BigDataViewer and press i to activate interpolation for better visualization
+- Left click and drag to rotate the data around the mouse pointer
+- Right click and drag to move the view across XY plane
+- Ctrl+shift+scroll to zoom in/out fast (ctrl+scroll for normal speed)
+- Select the BigDataViewer window and press i to activate tri-linear interpolation for better visualization
 
 ::: {layout-ncol=2}
 
@@ -299,94 +298,111 @@ Some of the most important commands are as follow:
 
 :::
 
-- Take some time to explore the data, the different views, zoom in and out, find the beads, and get familiar with the BigDataViewer
-- Then finish with the 5-views oriented as in the image
+- Select the Multiview Explorer window with the five views selected and press C. This will autocolor the views which is great for visualization.
 
 ![](media/41-bigstitcher-ready.png)
 
+Take some time to explore the data, the different views, zoom in and out, find the beads, and get familiar with the BigDataViewer. Then finish with the 5-views oriented as in the image above.
+
 ## Detect points {#sec-detect-points}
 
-- We can now start the first processing step of the pipeline, detecting points of interest to be used for the registration
-- The Multiview Explorer is always the starting point
+We can now start the first processing step of the pipeline, detecting points of interest to be used for the registration. The Multiview Explorer is always the starting point.
+
 - Select the five views of channel 561 (if not selected)
-- In this case, we want only the views of channel 2 to be selected since it is in this channel that the beads are visible
-- Then, then right click the rows with the mouse
-- A long menu will appear. This is the main menu of BigStitcher. Anything that we select will only be applied to the selected views.
-- After right-clicking, find the section Processing and select Detect Interest Points...
+
+In this case, we want only the views of channel 2 to be selected since it is in this channel that the beads are visible.
+
+- Then, right click the rows with the mouse
+
+A long menu will appear. This is the main menu of BigStitcher. Anything that we select will only be applied to the selected views.
+
+- Find the section `Processing` and select `Detect Interest Points...`
 
 ![](media/42-detect-menu.png)
 
-- In this first window we can choose the type of detection (Default: Difference of Gaussian) and a label to describe these interest points
-- One dataset can have multiple sets of interest points
+In this first window we can choose the `Type of interest point detection` (Default: `Difference of Gaussian`) and a label to describe these interest points. One dataset can have multiple sets of interest points.
+
 - We will keep the default options and press OK
 
 ![](media/43-detect-points.png)
 
-- We can set different parameters for the Difference of Gaussian approach
-- What is important to us at this point is to make sure that Interactive... is set for Interest point specification and that you change Downsample XY from Match Z Resolution (less downsampling) to 2x. The latter is not essential for all datasets but it works better for this dataset which has relatively high anisotropy (lower Z resolution compared to XY). Keep Downsample Z as 1x.
+We can set different parameters for the `Difference of Gaussian` approach. What is important to us at this point is to make sure that `Interactive...` is set for `Interest point specification` and that we change `Downsample XY` from `Match Z Resolution (less downsampling)` to `2x`. The latter is not essential for all datasets but it works better for this dataset which has relatively high anisotropy (lower Z resolution compared to XY). Keep `Downsample Z` as `1x`.
+
 - Press OK
 
 ![](media/44-detect-details.png)
 
-- In case, we can select which view we will open the interactive window and if we will load the entire stack. Simply press OK to load the entire first view
+In case, we can select which view we will open the interactive window and if we will load the entire stack.
+
+- Press OK to load the entire first view
 
 ![](media/45-detect-views.png)
 
-- A stack will open with a rectangular ROI placed at the top left corner
-- The ROI shows a live view of detected points for the current parameters Sigma and Threshold present in the other window
+A stack will open with a rectangular ROI placed at the top left corner. The ROI shows a live view of detected points for the current parameters `Sigma` and `Threshold` in the other window.
 
 ![](media/46-detect-interactive.png)
 
-- Sigma is the size (radius) of the point and Threshold is the intensity-based cut value to discard low-quality detections
-- The default is to Find DoG maxima (red) or, in other words, bright spots. You can also find dark spots surrounded by bright areas (useful for some samples)
-- This is a normal ImageJ window, so you can zoom, adjust contrast, and if you lose the ROI you can simply draw a new rectangular ROI
-- You can drag the ROI around by clicking inside it and holding/dragging it 
+`Sigma` is the size (radius) of the point and `Threshold` is the intensity-based cut value to discard low-quality detections. The default is to `Find DoG maxima (red)`, in other words, bright spots. We can also find dark spots surrounded by bright areas (useful for some samples). Note that this is a normal ImageJ window, so we can zoom, adjust contrast, and if we lose the ROI, we can simply draw a new rectangular ROI. We can drag the ROI around by clicking inside it and holding and dragging it.
 
 ![](media/47-detect-zoom.png)
 
-- What we want to do now is to adjust the Sigma and Threshold so that most of the beads outside the embryo are properly detect with the least of spurious detections
-- The best way to begin is to zoom in into a bead outside the embryo and check if the circle size is matching well the bead. Move the Sigma slider, aiming for a circle slightly larger than the bead
-- Remember to also move through the Z slices of the stack to see how the detection behaves
-- If the size looks good, now increase the Threshold until real beads begin to not be detect. Once you reach this point roll the slider back until most beads are detected
-- Note that, no matter how much you tweak these parameters, there’ll always be many detections in the sample tissues. These non-bead detections will not have a strong influence on the registration given that you have enough detected real beads
-- Once satisfied, press Done
+What we want to do now is to adjust the `Sigma` and `Threshold` so that most of the beads outside the embryo are properly detect with the least of spurious detections. The best way to begin is to:
+
+- Zoom in into a bead outside the embryo
+- Check if the circle size is matching well the bead
+- Move the Sigma slider, aiming for a circle slightly larger than the bead
+
+Remember to also move through the Z slices of the stack to see how the detection behaves.
+
+- If the size looks good, increase the `Threshold` until real beads begin to not be detected, then roll the slider back until most real beads are detected
+
+Note that, no matter how much we tweak these parameters, there’ll always be many non-bead detections in the sample tissues. These detections will not have a strong influence on the registration given that we have enough real beads in the sample.
+
+- When satisfied, press `Done`
 
 ![](media/48-detect-start.png)
 
-- Bead detection takes some time
-- Once DONE, go to the Multiview Explorer window and press Save
+Bead detection takes some time.
+
+- Once DONE, go to the `Multiview Explorer` window and press `Save`.
 
 ![](media/49-detect-done.png)
 
-- This is important because the detections are initially saved in memory and will be only written to disk after pressing Save (detections are saved in a directory named interestpoints.n5)
-- You can notice that the column #InterestPoints in the Multiview Explorer now shows 1 for the five views of channel 561 (but not for channel 488)
+This is important because the detections are initially saved in memory and will be only written to disk after pressing Save (detections are saved in a directory named interestpoints.n5).
+
+Note that the column `#InterestPoints` in the `Multiview Explorer` now shows 1 for the five views of channel 561 (but not for channel 488)
 
 ![](media/50-detect-increment.png)
 
 ## Register views {#sec-register-views}
 
-- Now we can try to register these views using the detected interest points
-- With the 5-views selected, right-click and run Register using Interest Points...
+Now we can try to register these views using the detected interest points.
+
+- With the 5-views selected, right-click and run `Register using Interest Points...`
 
 ![](media/51-register-menu.png)
 
-- We can change different registration parameters like the algorithm to be used or the specific set of previously interest points
-- We want to go with the default Fast descriptor-based (rotation invariant) Registration algorithm as it works well for bead-based registration with Z.1 datasets
-- Since our views are very further apart with almost no overlap, we want to change the option Registration in between views to Compare all views against each other
-- Leave the other options as is making sure we are using the Interest points labeled as `beads`
-- Click OK
+We can change different registration parameters like the algorithm to be used or the specific set of previously interest points. We want to go with the default `Fast descriptor-based (rotation invariant)` as `Registration algorithm` since this works well for bead-based registration with Z.1 datasets.
+
+- Because our views have almost no overlap, change the option `Registration in between views` to `Compare all views against each other`
+
+Leave the other options as is making sure we are using the Interest points labeled as `beads`.
+
+- Press OK
 
 ![](media/52-register-type.png)
 
-- A novel window will open with several other parameters to tweak. Please refer to the BigStitcher documentation for the specific function of these
-- For us, it is important to note two. The option Fix views set to Fix first view means that all other views will be mapped to the first angle. And the Transformation model set to Affine means that the data will be transformed non-rigidly to fit the individual views. This is important since different portions of the stack might have a certain degree of distortion from the objective lenses and an affine transformation helps to fit the views better together
-- The other parameters we will only need to change if our registration fails
+A window will open with several other parameters to tweak. Please refer to the BigStitcher documentation for the specific function of these. For us, it is important to note two.
+
+The option `Fix views` set to `Fix first view` means that all other views will be mapped to the first angle. The option `Transformation model` set to `Affine` means that the data will be transformed non-rigidly to fit the individual views. This is important since different portions of the stack might have a certain degree of distortion from the objective lenses and an affine transformation helps to fit the views better together. The other parameters we will only need to change if our initial registration fails.
+
 - Press OK
 
 ![](media/53-register-affine.png)
 
-- This small window with Regularization Parameters can be kept as is (Rigid and 0.10). Press OK
-- Same for the interest point grouping options. Press OK
+The next two small windows to open, `Regularization Parameters` (`Rigid` and `0.10`) and `Select interest point grouping` (`Group interest points` and `5`) can be kept as is.
+
+- Press OK on both
 
 ::: {layout-ncol=2}
 
@@ -394,9 +410,9 @@ Some of the most important commands are as follow:
 
 ![](media/55-register-grouping.png)
 
-::: 
+:::
 
-- The registration will begin and be over in a few seconds. Don’t blink or you will miss it! If successful, you will see that the individual views will now have moved over (registered) the first view and they are all overlapping in the BigDataViewer window
+The registration will begin and be over in a few seconds. Don’t blink or you will miss it! If successful, you will see that the individual views will now have moved over (registered) the first view and they are all overlapping in the BigDataViewer window
 
 ::: {layout-ncol=2}
 
@@ -404,45 +420,48 @@ Some of the most important commands are as follow:
 
 ![](media/57-register-after.png)
 
-::: 
+:::
 
-- Now that the views are registered, explore the dataset to verify that the registration worked well. The best way to do this is visually
-- One of the first things that you can do is to press shift+y and zoom in into a bead close to the embryo’s surface
+Now that the views are registered, explore the dataset to verify that the registration worked well. The best way to do this is visually. One of the first things that you can do is to:
+
+- Press shift+y and zoom in into a bead close to the embryo’s surface
 
 ![](media/58-register-check.png)
 
-- You will see the point spread function of one bead in each individual view forming a star with generally four views (as the fifth view is too further away).
-- If the sample is registered well, the center of the point spread functions of the different views should match in the middle of the star
+You will see the point spread function of one bead in each individual view forming a star with generally four views (as the fifth view is too further away). If the sample is registered well, the center of the point spread functions of the different views should match in the middle of the star
 
 ![](media/59-register-bead.png)
 
-- Another thing that you can do is to find a structure you know well in the sample and check that the tissues are actually registered. It can happen that the beads are nicely registered, but the tissues themselves are a bit off
-- One way to do this is to select only two contiguous views and check them closely
-- When done, make sure to Save the project again
+Another thing that you can do is to find a structure you know well in the sample and check that the tissues are actually registered. It can happen that the beads are nicely registered, but the tissues themselves are a bit off.
+
+- When done checking, make sure to Save the project again
 
 ![](media/60-register-save.png)
 
-- After saving, the #Registrations column should now show the number 3 for the selected views (if not deselect and select them again to update the counter)
+After saving, the `#Registrations` column should now show the number 3 for the selected views (if not, deselect and select them again to update the counter)
 
 ![](media/61-register-increment.png)
 
 ## Set bounding box {#sec-set-bounding}
 
-- Our dataset is registered, but before fusing the views it is important to set a bounding box around the sample. This reduces the final dimensions and file size of the fused data.
-- For that, right-click and select Define Bounding Box... 
+Our dataset is now registered, but before fusing the views it is important to set a bounding box around the sample. This reduces the final dimensions and file size of the fused data.
+
+- For that, right-click and select `Define Bounding Box...`
 
 ![](media/62-bounding-menu.png)
 
-- We want to define it interactively, so leave the Bounding Box option as isotropic
-- You can give the bounding box a custom name and define different bounding boxes for different purposes, but the default name is good enough for this tutorial. Click OK
+We want to define it interactively, so leave the `Bounding Box` option as `Define using the BigDataViewer interactively`. You can give the bounding box a custom name and define different bounding boxes for different purposes, but the default name is good enough for this tutorial.
+
+- Click OK
 
 ![](media/63-bounding-interactive.png)
 
-- Two windows will open: BigDataViewer with the sample and some purple shade and a bounding box window full of sliders
+Two windows will open: BigDataViewer with the sample and some purple shade and a bounding box window full of sliders.
 
 ![](media/64-bounding-box.png)
 
-- For defining the bounding box I follow a specific procedure, always in the same order, to avoid inadvertently leaving out a part of your sample when fusing
+For defining the bounding box I follow a specific procedure, always in the same order, to avoid inadvertently leaving out a part of your sample when fusing.
+
 - First, press shift+x to orient the sample on XY
 
 ![](media/65-bounding-shiftx.png)
@@ -459,17 +478,21 @@ Some of the most important commands are as follow:
 
 :::
 
-- Move the x min slider to the right to cut out the region on the left of the sample (the dashed line is the reference edge). Get close to the sample, but leave a gap
+- Move the x min slider to the right to cut out the region on the left of the sample (the dashed line is the reference edge).
+- Get close to the sample, but leave a gap
 
 ![](media/69-bounding-xmin.png)
 
-- Once the placed x min, go again top to bottom through Z to make sure nothing was cut out
-- Now do the same of x max to cut out the region on the right side of the sample
+- Once the x min is set, go again top to bottom through Z to make sure nothing was cut out
+- Now do the same for x max to cut out the region on the right side of the sample
 
 ![](media/70-bounding-xmax.png)
 
-- Next we want to cut a bit from the top and bottom regions
-- Move the slider y min to cut from the top and y max to cut from the bottom. Remember to go through Z to make sure it is not cutting the tip off the embryo (it happens)
+Next we want to cut a bit from the top and bottom regions.
+
+- Move the slider y min to cut from the top and y max to cut from the bottom.
+
+Remember to go through Z to make sure it is not cutting the tip off the embryo (it happens)
 
 ::: {layout-ncol=2}
 
@@ -483,7 +506,7 @@ Some of the most important commands are as follow:
 
 ![](media/73-bounding-shifty.png)
 
-- Use z min to cut from the top (in this orientation), always going through Y to check!
+- Use z min to cut from the top (in this orientation) always going through Y to check!
 - Then adjust z max to cut from the bottom (in this orientation), also going through Y.
 
 ::: {layout-ncol=2}
@@ -498,46 +521,74 @@ Some of the most important commands are as follow:
 
 ![](media/76-bounding-ok.png)
 
-- The dimensions of the interactively defined bounding box and the estimated sized of the fused image will appear.
+The dimensions of the interactively defined bounding box and the estimated sized of the fused image will appear.
+
 - Press OK and Save
 
 ![](media/77-bounding-dimensions.png)
 
 ## Fuse dataset (one channel) {#sec-fuse-single}
 
-- Finally, let’s begin the fusing of registered views
+Finally, let’s begin the fusing of registered views.
+
 - Select the five registered views in the Multiview Explorer, right-click and press Image Fusion...
 
 ![](media/78-fuse-menu.png)
 
-- The window with fusion options will appear
+The window with fusion options will appear.
 
 ![](media/79-fuse-options.png)
 
-- Our “My Bounding Box” is automatically selected for the Bounding Box
-- We can choose to downsample the fused image. I highly recommend downsampling 2x, 4x, or even 8x, depending on the dataset, if you are fusing a dataset for the first time.
-- Fusing without downsampling (1x) can take a really long time for large samples (many hours), so it is good practice to downsample the fused image to make sure the fusing parameters are good for your dataset before fusing the whole thing.
-- But for this tutorial, you can leave at 1x
-- For Interpolation leave Linear interpolation as it gives better outputs
-- Fusion type is an important parameter to choose wisely
-- The simplest is Avg, which averages the signal of every view per pixel. This is quick but it is combining the good contrast of one view with the blurred side of another view and the resulting contrast will be suboptimal.
-- Avg, Blending is the same as Avg, but it blends smoothly the edges of the different views giving a slightly better fusing than simple Avg
-- Avg, Blending & Content Based improves the other two options by adding a step that checks and keeps only the best information for each coordinate (keep good contrast, discard blurred information). This option gives the best results. However, it is also the one that requires more memory and takes longer to finish (much longer)
-- Therefore, I would start with 2x or 4x downsample using Avg, Blending before trying less downsampling and the content based fusion
-- For the Pixel type I often use 16-bit, but it depends on what is your goal with the fused image. If it is only to have a volume visualization, 8-bit might be enough. If further processing and analysis is expected, definitely go for 16-bit or, in special cases, 32-bit.
-- BigStitcher also has an option for using the interest points information during the fusion step to obtain better results (Non-Rigid fusion). This is for advanced users and I have not tried it enough to have an opinion about it.
-- Generally, we want to have one fused image per timepoint per channel
-- And I always Save as (compressed) TIFF stacks for the Fused image option. Choosing Display using ImageJ can be dangerous as the fused image will be large and your computer can run out of memory and crash. Writing to disk is safer.
-- After pressing OK there’ll be another window to define the min/max levels, but they are automatically detected. Press OK
+Our “My Bounding Box” is automatically selected for the Bounding Box.
+
+We can choose to downsample the fused image. I highly recommend downsampling 2x, 4x, or even 8x, when fusing a dataset for the first time. Fusing without downsampling (1x) can take a really long time for large samples (many hours), so it is good practice to downsample the fused image to make sure the fusing parameters are good for the dataset before fusing the whole thing.
+
+- For this tutorial, leave `Downsampling` at `1x`
+- For `Interpolation` keep `Linear interpolation`, as it gives better outputs
+
+The `Fusion type` is an important parameter to choose wisely.
+
+1. The simplest is `Avg`, which averages the signal of every view per pixel. This is quick but it is combining the good contrast of one view with the blurred side of another view and the resulting contrast will be suboptimal.
+2. `Avg, Blending` is the same as `Avg`, but it blends smoothly the edges of the different views giving a slightly better fusing than simple `Avg`
+3. `Avg, Blending & Content Based` improves the other two options by adding a step that checks and keeps only the best information for each coordinate (keep good contrast, discard blurred information). This option gives the best results. However, it is also the one that requires more memory and takes longer to finish (much longer)
+
+A sane start would be 2x or 4x downsample using `Avg, Blending` before trying less downsampling and the content based fusion.
+
+- For this tutorial, set `Fusion type` to `Avg, Blending`
+
+For the `Pixel type` I often use 16-bit, but it depends on what is the goal of the fused image. If it is only to have a volume visualization, 8-bit might be enough. If further processing and analysis is expected, definitely go for 16-bit or, in special cases, 32-bit.
+
+- Set `Pixel type` to `16-bit unsigned integer`
+
+BigStitcher also has an option for using the interest points information during the fusion step to obtain better results (`Interest Points for Non-Rigid`). This is a newer feature for advanced use cases and I have not tried it enough to have an opinion about it.
+
+- Leave `Interest Points for Non-Rigid` as `-= Disable Non-Rigid =-`
+
+Generally, we want to have one fused image per timepoint per channel.
+
+- Set `Produce one fused image for` to `Each timepoint & channel`
+
+And I always save the fused image to tiff stacks. Choosing Display using ImageJ can be dangerous as the fused image will be large and the computer can run out of memory and crash. Writing to disk is safer.
+
+- Set `Fused image` to `Save as (compressed) TIFF stacks`
+
+- Press OK.
+- A window with min/max levels will open
+- Press OK.
 
 ![](media/80-fuse-minmax.png)
 
-- The output directory will be the same where the dataset.xml is. You can add a Filename addition to distinguish different types of fusion and downsampling (useful when doing it multiple times)
+The output directory is the same where the `dataset.xml` is. We can add a prefix to the filename to distinguish different types of fusion and downsampling (useful when doing it multiple times)
+
+- Set `Filename addition` to `avg_blend_1x`
 - Press OK and fusion will start
 
 ![](media/81-fuse-filename.png)
 
-- Once done, drag and drop the fused dataset named `avg_blend_1x_fused_tp_0_ch_1` in Fiji to open it and adjust the contrast with the Brightness/Contrast tool to see the data
+When done, open the fused dataset in Fiji.
+
+- Drag and drop the file `avg_blend_1x_fused_tp_0_ch_1` into Fiji’s window
+- Then, adjust the contrast to see the data
 
 ::: {layout-ncol=2}
 
@@ -547,52 +598,65 @@ Some of the most important commands are as follow:
 
 :::
 
-- Inspect the fusion result, checking for artifacts. If your sample has a membrane staining, for example, check for doubled membranes
-- Note that this is an isotropic dataset
+Inspect the fusion result, checking for artifacts. If the sample has a membrane staining, for example, check for doubled membranes
+
+- Check the fused dataset with the Orthogonal Views
 
 ![](media/84-fuse-isotropic.png)
 
+Note that the resulting fused image is isotropic.
+
 ## Duplicate transformation {#sec-duplicate-transformation}
 
-- Now that we have successfully registered and fused the views of one channel, we can simply apply the series of transformations to the other channel without the need to detect interest points or register the channel independently
+Now that we have successfully registered and fused the views of one channel, we can simply apply the series of transformations to the other channel without the need to detect interest points or register the channel independently.
 
 ![](media/85-duplicate-unregistered.png)
 
-- You can do so using the tool Duplicate Transformations from BigStitcher
-- First, close the Multiview Explorer and the Select dataset window that pops-up
-- Then go to Plugins > BigStitcher > General > Tools > Duplicate Transformations
+We can do so using the tool Duplicate Transformations from BigStitcher.
+
+- First, take a note of which channel we have registered (it’s the `561`)
+- Then, close the `Multiview Explorer` and the `Select dataset` window that pops-up
+- Finally, go to `Plugins` > `BigStitcher` > `General` > `Tools` > `Duplicate Transformations`
 
 ![](media/86-duplicate-open.png)
 
-- Select the option One channel to other channels
+- Select the option `One channel to other channels`
 
 ![](media/87-duplicate-channels.png)
 
-- A Select dataset window will open with the last dataset.xml already opened. Press OK
+A `Select dataset` window will open with the last `dataset.xml` already opened.
+
+- Press OK
 
 ![](media/88-duplicate-dataset.png)
 
-- Now choose the source channel. Remember that we registered the Channel 561 (channel 2).
-- The Target channel(s) is All Channels (all the other channels except for the source one).
-- The last option, Duplicate which transformations is important. Generally, Replace all transformations work for most cases. However, I often prefer to use Add last transformation only. This will take the last transformation from the source channel and apply to the target channel.
-- Note, however, that for this to work, the source channel can only be one transformation ahead of the target. If for instance, we ran two subsequent transformations for the source channel, then applying only the last would not duplicate all the transformations. Always check the #Registrations in the Multiview Explorer.
+- Set the `Source channel` to `561`
+- Set `Target channel(s)` to `All Channels` (all the other channels except for the source one).
+
+The last option, `Duplicate which transformations` is important. Generally, `Replace all transformations` work for most cases. However, I often prefer to use `Add last transformation only`. This will take the last transformation from the source channel and apply to the target channel. For this to work, however, the source channel can only be one transformation ahead of the target. If, for instance, we had ran two subsequent transformations on the source channel, then applied only the last one to the other channels, we would not entirely duplicate all the transformations between the channels. So, always check the `#Registrations` in the `Multiview Explorer` to be sure if only the last duplication would work, or simply replace all transformations.
+
+- For now, set `Duplicate which transformations` to `Add last transformation only`.
+- Press OK
 
 ![](media/89-duplicate-options.png)
 
-- Once you press OK, the transformations will be applied in the XML file. It’s quick.
-- Now open BigStitcher again and check if the 5 views of the other channel are registered (they should)
+The transformations will be applied and recorded in the XML file. It’s quick.
+
+- Open BigStitcher again and check if the 5 views of the other channel are registered (they should)
 
 ![](media/90-duplicate-registered.png)
 
 ## Fuse dataset (all channels) {#sec-fuse-all}
 
-- We have now both channels registered, but only one fused
-- To fuse both channels select all the views in the Multiview Explorer
+We now have both channels registered, but only one was fused.
+
+- To fuse both channels select all the views in the `Multiview Explorer`, right-click, and select `Image Fusion...`
 
 ![](media/91-fuse-all.png)
 
-- Then set the desired parameters for fusion (optimized previously) and run the fusion again as described above
-- This time there will be two files as output: avg_blend_1x_fused_tp_0_ch_0.tif and avg_blend_1x_fused_tp_0_ch_1.tif
+- Set the desired parameters for fusion (optimized previously) and run the fusion again as described above
+
+This time there will be two files as output: `avg_blend_1x_fused_tp_0_ch_0.tif` and `avg_blend_1x_fused_tp_0_ch_1.tif`
 
 ![](media/92-fuse-outputs.png)
 
@@ -600,16 +664,17 @@ Some of the most important commands are as follow:
 
 ![](media/93-fuse-contrast.png)
 
-- Then go to Image > Color > Merge Channels...
+- Then go to `Image` > `Color` > `Merge Channels...`
 
 ![](media/94-fuse-merge.png)
 
-- Select ch_0 for C1 and ch_1 for C2 and press OK
+- Select `ch_0` for `C1` and `ch_1` for `C2` and press OK
 
 ![](media/95-fuse-merged.png)
 
-- A red-green 2-channel stack will open
-- As red-green isn’t good, use the LUT tool to update the colors to green for C1 and magenta for C2.
+A red-green 2-channel stack will open. But, red-green combination isn’t good.
+
+- Update the red to magenta using the LUT tool
 
 ::: {layout-ncol=2}
 
@@ -619,10 +684,13 @@ Some of the most important commands are as follow:
 
 :::
 
-- We can even compare this fused dataset with one single view of the original dataset.
+We can even compare this fused dataset with one of the views of the original dataset.
+
 - Drag and drop the CZI file, select the first view only to import, and put the stacks side-by-side for a comparison slice by slice
 
 ![](media/98-fuse-versus.png)
+
+Note how the missing data in the single view is nicely present in the fused dataset.
 
 ## References
 
