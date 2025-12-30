@@ -8,7 +8,7 @@ The tutorial is available online at [bruvellu.github.io/multiview-tutorial](http
 
 ### Offline usage
 
-- Download the latest archive from GitHub ([here](https://github.com/bruvellu/multiview-tutorial/archive/refs/heads/main.zip)) or Zenodo ([here](https://doi.org/10.5281/zenodo.XXXXXXXXX))
+- Download the latest archive from GitHub ([here](https://github.com/bruvellu/multiview-tutorial/archive/refs/heads/main.zip)) or Zenodo ([here](https://doi.org/10.5281/zenodo.18090752))
 - Unzip the archive in your working directory
 - Open the file `multiview-tutorial.html` on your browser
 
