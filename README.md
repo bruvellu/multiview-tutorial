@@ -14,7 +14,7 @@ The tutorial is available online at [bruvellu.github.io/multiview-tutorial](http
 
 ## Citation
 
-Vellutini, B. C. (2026). Multiview reconstruction in Fiji using BigStitcher. Zenodo. <https://doi.org/10.5281/zenodo.XXXXXXXXX>
+Vellutini, B. C. (2026). Multiview reconstruction in Fiji using BigStitcher. Zenodo. <https://doi.org/10.5281/zenodo.18090752>
 
 ## License
 

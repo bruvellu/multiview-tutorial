@@ -694,7 +694,7 @@ Note how the missing data in the single view is nicely present in the fused data
 
 ## Citation {#sec-citation}
 
-Vellutini, B. C. (2026). Multiview reconstruction in Fiji using BigStitcher. Zenodo. <https://doi.org/10.5281/zenodo.XXXXXXXXX>
+Vellutini, B. C. (2026). Multiview reconstruction in Fiji using BigStitcher. Zenodo. <https://doi.org/10.5281/zenodo.18090752>
 
 ## License {#sec-license}
 
